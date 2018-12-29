@@ -1,9 +1,10 @@
 import json
 # init block
-real_number = str("+38.7")
+real_number = str("-38.7888")
 integer_part = str("")
 decimal_part = str("")
 current_state = str("s_00")
+previous_state = str("s_00")
 event = str("unknown")
 fsm_matrix = {
     "s_00":{
@@ -60,23 +61,30 @@ while i < len(real_number) + 1:
     if i == len(real_number):
         event = "v_40"
 
-    print("i:[" + str(i) +"] and event:[" + event + "]")
 
     # define new state
     state = fsm_matrix[current_state][event]
     previous_state = current_state
     current_state = state
+    
+    if i < len(real_number):
+        print("i:[" + str(i) +"] | event:[" + event + "] | real_number[i]:[" + real_number[i] + "] | previous_state:[" + previous_state + "] | current_state:[" + current_state + "] ")
+
 
     if current_state in fsm_matrix:
         if current_state == "s_20":
             integer_part += real_number[i]
         if current_state == "s_40":
             decimal_part += real_number[i]
+        i += 1
+        continue
+    break
 
+if current_state.find("END") != 0:
+       print("Error code:[" + current_state +"]")
 
-    i += 1
-
-print("integer_part:[" + integer_part +"] and decimal_part:[" + decimal_part + "]")
+if current_state.find("END") == 0: 
+    print("integer_part:[" + integer_part +"] and decimal_part:[" + decimal_part + "]")
 
 
 
