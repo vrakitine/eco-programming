@@ -1,6 +1,6 @@
 import json
 # init block
-real_number = str("-38.7888")
+real_number = str("-56.78")
 integer_part = str("")
 decimal_part = str("")
 current_state = str("s_00")
@@ -31,7 +31,8 @@ fsm_matrix = {
     "s_30":{
         "v_10":"Err_60",
         "v_20":"s_40",
-        "v_30":"Err_70",
+       # "v_30":"Err_70",
+        "v_30":"s_30",
         "v_40":"END",
         "v_50":"Err_20",
     },    
@@ -47,7 +48,7 @@ fsm_matrix = {
 # define event code
 i = 0
 while i < len(real_number) + 1:
-    event = "s_50"
+    event = "v_50"
     
     if i < len(real_number):
         if real_number[i] in ["+","-"]:
