@@ -6,12 +6,19 @@ decimal_part = str("")
 current_state = str("s_00")
 previous_state = str("s_00")
 event = str("unknown")
+
+# V_10 => <Sign> , 
+# V_20 => <digit> , 
+# V_30 => <Separator> , 
+# V_40 => Carriage return (CR), 
+# V_50 => <Unknown> it means something different from V_10 ... V_40
+
 fsm_matrix = {
     "s_00":{
         "comment":"initial state",
         "v_10":"s_10",
-        "v_20":"s_10",
-        "v_30":"s_10",
+        "v_20":"s_20",
+        "v_30":"s_30",
         "v_40":"Err_10",
         "v_50":"Err_20",
    },    
@@ -35,7 +42,7 @@ fsm_matrix = {
         "comment":"state of separator",
         "v_10":"Err_60",
         "v_20":"s_40",
-       # "v_30":"Err_70",
+       # "v_30":"Err_70" 
         "v_30":"s_30",
         "v_40":"END",
         "v_50":"Err_20",
@@ -49,6 +56,9 @@ fsm_matrix = {
         "v_50":"Err_20",
    }    
 }
+
+# input block
+real_number = input("\nInput real_number? ")
 
 # define event code
 i = 0
@@ -74,7 +84,7 @@ while i < len(real_number) + 1:
     current_state = state
     
     if i < len(real_number):
-        print("i:[" + str(i) +"] | event:[" + event + "] | real_number[i]:[" + real_number[i] + "] | previous_state:[" + previous_state + "] | current_state:[" + current_state + "] ")
+        print("\ni:[" + str(i) +"] | event:[" + event + "] | real_number[i]:[" + real_number[i] + "] | previous_state:[" + previous_state + "] | current_state:[" + current_state + "] ")
 
 
     if current_state in fsm_matrix:
@@ -87,10 +97,10 @@ while i < len(real_number) + 1:
     break
 
 if current_state.find("END") != 0:
-       print("Error code:[" + current_state +"]")
+       print("\n\n\nError code:[" + current_state +"]\n\n")
 
 if current_state.find("END") == 0: 
-    print("integer_part:[" + integer_part +"] and decimal_part:[" + decimal_part + "]")
+    print("\n\ninteger_part:[" + integer_part +"] and decimal_part:[" + decimal_part + "]\n")
 
 
 
