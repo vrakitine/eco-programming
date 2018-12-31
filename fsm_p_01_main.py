@@ -8,6 +8,7 @@ previous_state = str("s_00")
 event = str("unknown")
 fsm_matrix = {
     "s_00":{
+        "comment":"initial state",
         "v_10":"s_10",
         "v_20":"s_10",
         "v_30":"s_10",
@@ -15,6 +16,7 @@ fsm_matrix = {
         "v_50":"Err_20",
    },    
     "s_10":{
+        "comment":"state of sign",
         "v_10":"Err_30",
         "v_20":"s_20",
         "v_30":"s_30",
@@ -22,6 +24,7 @@ fsm_matrix = {
         "v_50":"Err_20",
    },    
     "s_20":{
+        "comment":"state of integer part",
         "v_10":"Err_50",
         "v_20":"s_20",
         "v_30":"s_30",
@@ -29,6 +32,7 @@ fsm_matrix = {
         "v_50":"Err_20",
    },    
     "s_30":{
+        "comment":"state of separator",
         "v_10":"Err_60",
         "v_20":"s_40",
        # "v_30":"Err_70",
@@ -37,6 +41,7 @@ fsm_matrix = {
         "v_50":"Err_20",
     },    
     "s_40":{
+        "comment":"state of decimal part",
         "v_10":"Err_80",
         "v_20":"s_40",
         "v_30":"Err_90",
