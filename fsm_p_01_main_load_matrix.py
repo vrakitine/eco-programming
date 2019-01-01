@@ -15,57 +15,16 @@ current_state = str("s_00")
 previous_state = str("s_00")
 event = str("unknown")
 
-# V_10 => <Sign> , 
-# V_20 => <digit> , 
-# V_30 => <Separator> , 
-# V_40 => Carriage return (CR), 
-# V_50 => <Unknown> it means something different from V_10 ... V_40
-
-fsm_matrix = {
-    "s_00":{
-        "comment":"initial state",
-        "v_10":"s_10",
-        "v_20":"s_20",
-        "v_30":"s_30",
-        "v_40":"Err_10",
-        "v_50":"Err_20",
-   },    
-    "s_10":{
-        "comment":"state of sign",
-        "v_10":"Err_30",
-        "v_20":"s_20",
-        "v_30":"s_30",
-        "v_40":"Err_40",
-        "v_50":"Err_20",
-   },    
-    "s_20":{
-        "comment":"state of integer part",
-        "v_10":"Err_50",
-        "v_20":"s_20",
-        "v_30":"s_30",
-        "v_40":"END",
-        "v_50":"Err_20",
-   },    
-    "s_30":{
-        "comment":"state of separator",
-        "v_10":"Err_60",
-        "v_20":"s_40",
-       # "v_30":"Err_70" 
-        "v_30":"s_30",
-        "v_40":"END",
-        "v_50":"Err_20",
-    },    
-    "s_40":{
-        "comment":"state of decimal part",
-        "v_10":"Err_80",
-        "v_20":"s_40",
-        "v_30":"Err_90",
-        "v_40":"END",
-        "v_50":"Err_20",
-   }    
-}
-
 # input block
+
+case_number = input("\nInput case_number? ")
+fsm_matrix_file_name = "fsm_matrix_for_case_" + case_number + ".json"
+
+with open(fsm_matrix_file_name, 'r') as f:
+    fsm_matrix = json.load(f)
+
+print("Loaded data from:[" + fsm_matrix_file_name + "]")
+
 real_number = input("\nInput real_number? ")
 
 # define event code
