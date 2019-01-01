@@ -1,4 +1,11 @@
 {
+    "comments - events description":{
+        "v_10":"<Sign>",
+        "v_20":"<digit>",
+        "v_30":"<Separator>",
+        "v_40":"Carriage return (CR) or end of string",
+        "v_50":"<Unknown> it means something different from V_10 ... V_40"
+    },
     "s_00":{
         "comment":"initial state",
         "v_10":"s_10",
