@@ -2,12 +2,10 @@
 Case 00
 '''
 
-You can use python emulator online 
-https://www.onlinegdb.com/online_python_interpreter
-for the code below. Just simple copy and paste code to the emulator.
-Enjoy!
-
-'''
+# You can use python emulator online 
+# https://www.onlinegdb.com/online_python_interpreter
+# for the code below. Just simple copy and paste code to the emulator.
+# Enjoy!
 
 import json
 # init block
