@@ -16,14 +16,14 @@ previous_state = str("s_00")
 event = str("unknown")
 
 # input block
-
+path = "p_01_040_plus/"
 case_number = input("\nInput case_number? ")
-fsm_matrix_file_name = "fsm_matrix_for_case_" + case_number + ".json"
-
-with open(fsm_matrix_file_name, 'r') as f:
+fsm_matrix_file_name = case_number + "_case_fsm_matrix.json"
+full_name = path + fsm_matrix_file_name
+with open(full_name, 'r') as f:
     fsm_matrix = json.load(f)
 
-print("Loaded data from:[" + fsm_matrix_file_name + "]")
+print("Loaded data from:[" + full_name + "]")
 
 real_number = input("\nInput real_number? ")
 
